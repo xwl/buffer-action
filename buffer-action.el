@@ -1,9 +1,9 @@
 ;;; buffer-action.el --- Perform actions(compile/run, etc) in buffer based on mode/filename
 
-;; Copyright (C) 2005, 2007, 2008, 2009, 2010 William Xu
+;; Copyright (C) 2005, 2007, 2008, 2009, 2010, 2012 William Xu
 
 ;; Author: William Xu <william.xwl@gmail.com>
-;; Version: 3.4a
+;; Version: 3.4
 ;; Url: http://xwl.appspot.com/ref/buffer-action.el
 
 ;; This program is free software; you can redistribute it and/or modify
