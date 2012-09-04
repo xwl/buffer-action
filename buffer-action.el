@@ -79,9 +79,17 @@ end).
   :type 'symbol
   :group 'buffer-action)
 
+(defvar buffer-action-cc (let ((cc (some 'executable-find '("clang" "gcc"))))
+                           (when cc
+                             (file-name-nondirectory cc))))
+
+(defvar buffer-action-c++ (let ((c++ (some 'executable-find '("clang" "gc++"))))
+                           (when c++
+                             (file-name-nondirectory c++))))
+
 (defcustom buffer-action-table
-  '((c-mode    "gcc -O2 %f -lm -o %n" "%n" "./%n")
-    (c++-mode  "g++ -O2 %f -lm -o %n" "%n" "./%n")
+  `((c-mode ,(concat buffer-action-cc " -O2 %f -lm -o %n") "%n" "./%n")
+    (c++-mode ,(concat buffer-action-c++ " -O2 %f -lm -o %n") "%n" "./%n")
     (java-mode "javac %n" "%n.class" "java %n")
     (makefile-mode "make" nil nil)
     ("\\.pl$" "perl -cw %f" nil "perl -s %f")
