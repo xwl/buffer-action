@@ -83,7 +83,7 @@ end).
                            (when cc
                              (file-name-nondirectory cc))))
 
-(defvar buffer-action-c++ (let ((c++ (some 'executable-find '("clang" "gc++"))))
+(defvar buffer-action-c++ (let ((c++ (some 'executable-find '("clang++" "g++"))))
                            (when c++
                              (file-name-nondirectory c++))))
 
