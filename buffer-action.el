@@ -168,8 +168,10 @@ edit it again, please add C-u prefix."
             (setq buffer-action-compile-action
                   (buffer-action-replace buffer-action-compile-action))
             (setq compile-command buffer-action-compile-action)
-            (call-interactively 'compile)
-            (setq buffer-action-compile-action compile-command))
+            (let ((buf (current-buffer)))
+              (call-interactively 'compile)
+              (with-current-buffer buf
+                (setq buffer-action-compile-action compile-command))))
         (funcall buffer-action-compile-action)))
      ;; 3. Just compile
      ((stringp buffer-action-compile-action)
