@@ -1,6 +1,6 @@
 ;;; buffer-action.el --- Perform actions(compile/run, etc) in buffer based on mode/filename
 
-;; Copyright (C) 2005, 2007, 2008, 2009, 2010, 2012 William Xu
+;; Copyright (C) 2005, 2007, 2008, 2009, 2010, 2012, 2013, 2014 William Xu
 
 ;; Author: William Xu <william.xwl@gmail.com>
 ;; Version: 3.4
@@ -89,7 +89,7 @@ end).
 
 (defcustom buffer-action-table
   `((c-mode ,(concat buffer-action-cc " -O2 %f -lm -o %n") "%n" "./%n")
-    (c++-mode ,(concat buffer-action-c++ " -O2 %f -lm -o %n") "%n" "./%n")
+    (c++-mode ,(concat buffer-action-c++ " -O2 %f -lm -o %n") "%n" "./%n") ; -std=c++11
     (java-mode "javac %n" "%n.class" "java %n")
     (makefile-mode "make" nil nil)
     ("\\.pl$" "perl -cw %f" nil "perl -s %f")
