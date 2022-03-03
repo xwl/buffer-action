@@ -133,6 +133,10 @@ See also `buffer-action-replace-table'."
   :type 'symbol
   :group 'buffer-action)
 
+(defcustom buffer-action-needs-confirmation nil
+  "When t, asks for confirmation of the compile command line."
+  :type 'boolean
+  :group 'buffer-action)
 
 ;;; Interface functions
 
@@ -169,7 +173,9 @@ edit it again, please add C-u prefix."
                   (buffer-action-replace buffer-action-compile-action))
             (setq compile-command buffer-action-compile-action)
             (let ((buf (current-buffer)))
-              (call-interactively 'compile)
+              (if (or current-prefix-arg buffer-action-needs-confirmation)
+                  (call-interactively 'compile)
+                (compile compile-command))
               (with-current-buffer buf
                 (setq buffer-action-compile-action compile-command))))
         (funcall buffer-action-compile-action)))
